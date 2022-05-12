@@ -1,8 +1,5 @@
 function Todo(props) {
-  function deleteHandler() {
-    console.log("Clicked!");
-    console.log(props.text);
-  }
+  function deleteHandler() {}
 
   return (
     <div className="card">
