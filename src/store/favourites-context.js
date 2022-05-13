@@ -3,9 +3,12 @@ import { createContext, useState } from "react";
 const FavouritesContext = createContext({
   favourites: [],
   totalFavourites: 0,
+  addFavourite: (favouriteMeetup) => {},
+  removeFavourite: (meetupId) => {},
+  itemIsFavourite: (meetupId) => {},
 });
 
-function FavouritesContextProvider(props) {
+export function FavouritesContextProvider(props) {
   const [userFavourites, setUserFavourites] = useState([]);
 
   function addFavouriteHandler(favouriteMeetup) {
@@ -27,6 +30,9 @@ function FavouritesContextProvider(props) {
   const context = {
     favourites: userFavourites,
     totalFavourites: userFavourites.length,
+    addFavourite: addFavouriteHandler,
+    removeFavourite: removeFavouriteHandler,
+    itemIsFavourite: itemIsFavouriteHandler,
   };
 
   return (
@@ -35,3 +41,5 @@ function FavouritesContextProvider(props) {
     </FavouritesContext.Provider>
   );
 }
+
+export default FavouritesContext;
